@@ -1,46 +1,48 @@
 # img_handler_fe
 
-This template should help get you started developing with Vue 3 in Vite.
+use: vue3 + ts + vite + naive-ui + vtk.js
 
-## Recommended IDE Setup
+preview_demo:
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+![preview.jpg](static%2Fpreview.jpg)
 
-## Type Support for `.vue` Imports in TS
+mpr_demo:
+![mpr.jpg](static%2Fmpr.jpg)
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+3d_demo:
+![3d.jpg](static%2F3d.jpg)
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+# install
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
+```
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+# setup
 
-```sh
-npm run dev
+1. config `/src/config.ts`,
+2. `npm run dev`
+3. `click Start button` will send dicom path to py handler.
+
+# py handler
+
+here is py handler link:
+[py handler](https://github.com/l5769389/dicom_img_handler_be)
+
+# electron
+
+you can build electron App through:
+
+```
+npm run build electron
 ```
 
-### Type-Check, Compile and Minify for Production
+# todo
 
-```sh
-npm run build
-```
+1. Pseudocolor
+2. export
+3. reset
+4. play、pause
+5. bug fix
 
-### Lint with [ESLint](https://eslint.org/)
 
-```sh
-npm run lint
-```

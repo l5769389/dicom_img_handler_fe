@@ -9,7 +9,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div>
+  <div >
     <div v-for="item in props.info" :key="item.toString()">
       <div v-if="typeof item === 'string'" class="desc flex justify-center">
         {{ item }}

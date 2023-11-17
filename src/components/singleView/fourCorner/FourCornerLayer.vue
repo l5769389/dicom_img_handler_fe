@@ -13,13 +13,15 @@ const props = defineProps<propsType>()
 const viewDesc = inject<Ref<viewDescType>>(
   'viewDescMap',
   ref({
-    preview: new Map(),
-    sag: new Map(),
-    ax: new Map(),
-    cor: new Map()
+    preview: {},
+    sag: {},
+    ax: {},
+    cor: {}
   })
 )
-const descInfo = computed(() => viewDesc.value[props.viewType])
+const descInfo = computed(() => {
+  return viewDesc.value[props.viewType]
+})
 </script>
 
 <template>
@@ -29,21 +31,21 @@ const descInfo = computed(() => viewDesc.value[props.viewType])
         class="flex-1"
         v-for="item in ['lt', 'tm', 'rt']"
         :key="item"
-        :info="descInfo.get(item)"
+        :info="descInfo[item]"
       ></four-corner-item>
     </div>
     <div class="flex justify-between h-[30px]">
       <four-corner-item
         v-for="item in ['lm', 'rm']"
         :key="item"
-        :info="descInfo.get(item)"
+        :info="descInfo[item]"
       ></four-corner-item>
     </div>
     <div class="flex justify-between flex-1 items-end">
       <four-corner-item
         v-for="item in ['lb', 'bm', 'rb']"
         :key="item"
-        :info="descInfo.get(item)"
+        :info="descInfo[item]"
       ></four-corner-item>
     </div>
   </div>

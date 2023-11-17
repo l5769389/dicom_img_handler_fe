@@ -29,7 +29,9 @@ interface mprImgProvideCenterType {
 }
 
 type viewDescType = {
-  [key in windowType]: Map<string, any>
+  [key in windowType]: {
+    [key: string]: any
+  }
 }
 
 interface aspectType {

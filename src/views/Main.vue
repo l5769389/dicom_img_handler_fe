@@ -4,8 +4,8 @@ import Preview from '@/components/views/Preview.vue'
 import ThreeDView from '@/components/views/ThreeDView.vue'
 
 import { MyWebsocket } from '@/MyWebsocket'
-import { provide, ref, watch } from 'vue'
-import type { mprImgProvideType, msgReceivedType } from '@/types'
+import { provide, reactive, ref, watch } from 'vue'
+import type { mprImgProvideType, msgReceivedType, viewDescType } from '@/types'
 import { useOpStore } from '@/stores/activeOpViewType'
 
 const previewImgRef = ref('')
@@ -13,6 +13,13 @@ const mprImgRef = ref<mprImgProvideType>({
   sag: '',
   cor: '',
   ax: ''
+})
+
+const viewDescMap = reactive<viewDescType>({
+  preview: [],
+  sag: [],
+  cor: [],
+  ax: []
 })
 
 const mprImgCenterRef = ref({
@@ -43,16 +50,21 @@ provide('previewImg', previewImgRef)
 provide('mprImg', mprImgRef)
 provide('mprImgCenter', mprImgCenterRef)
 provide('activeTab', activeTabName)
+provide('viewDescMap', viewDescMap)
 
 const handleMsg: (msg: any) => void = (msg) => {
-  const { type, imgs, center }: msgReceivedType = JSON.parse(msg)
+  const { type, imgs, center, desc }: msgReceivedType = JSON.parse(msg)
   if (type === 'preview') {
     previewImgRef.value = imgs as string
     if (typeof imgs === 'string') {
       console.log(`收到图片,大小为${imgs.length}`)
     }
+    viewDescMap['preview'] = desc
   } else if (type === 'mpr') {
     mprImgRef.value = imgs as mprImgProvideType
+    viewDescMap['ax'] = desc['ax']
+    viewDescMap['sag'] = desc['sag']
+    viewDescMap['cor'] = desc['cor']
   } else {
     console.log('single mpr')
     mprImgRef.value[type] = imgs as string

@@ -5,6 +5,7 @@ import type { windowType } from '@/types'
 import DragButton from '@/components/singleView/DragButton.vue'
 import { useHandlerTouchOrMouseOp } from '@/components/singleView/useHandlerTouchOrMouseOp'
 import _ from 'lodash'
+import FourCornerLayer from '@/components/singleView/fourCorner/FourCornerLayer.vue'
 
 const props = defineProps({
   imgSrc: {
@@ -80,7 +81,7 @@ const emit = defineEmits(['getAspect'])
     @touchmove="handleTouchmove"
     @touchend="handleTouchEnd"
     @click="handleClick"
-    class="w-full h-full relative"
+    class="w-full h-full relative touch-manipulation"
     ref="viewerRef"
   >
     <img
@@ -90,7 +91,8 @@ const emit = defineEmits(['getAspect'])
       class="w-full h-full"
       @load="console.log('load')"
     />
-    <drag-button v-if="center[0] !== 0 && center[1] !== 0" :viewType="viewType" :center="center" />
+    <drag-button v-if="center[0] !== 0 && center[1] !== 0" :viewType="viewType" :center="center" class="z-10"/>
+    <four-corner-layer class="absolute left-0 top-0" :viewType="props.viewType" />
   </div>
 </template>
 

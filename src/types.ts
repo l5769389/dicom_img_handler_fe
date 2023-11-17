@@ -1,6 +1,4 @@
-import { int } from "three/examples/jsm/nodes/shadernode/ShaderNodeBaseElements";
-
-type windowType = 'scout' | 'preview' | 'sag' | 'cor' | 'ax'
+type windowType = 'preview' | 'sag' | 'cor' | 'ax'
 type mprViewType = 'sag' | 'cor' | 'ax'
 type mprWindowPositionType = 'left1' | 'left2' | 'right'
 type activeTabType = 'preview' | 'mpr'
@@ -8,13 +6,13 @@ type actionType = 'down' | 'move' | 'up'
 
 interface opMsgType {
   type: windowType
-  opType: string,
-  subOpType?:string,
+  opType: string
+  subOpType?: string
   x?: number
   y?: number
-  zoom?: number,
-  scroll?: number,
-  actionType?: actionType,
+  zoom?: number
+  scroll?: number
+  actionType?: actionType
   interval?: number
 }
 
@@ -28,6 +26,10 @@ interface mprImgProvideCenterType {
   sag: number[]
   cor: number[]
   ax: number[]
+}
+
+type viewDescType = {
+  [key in windowType]: Map<string, any>
 }
 
 interface aspectType {
@@ -44,18 +46,17 @@ type singleViewAspectType = aspectType
 type loadImgType = loadSingleViewType | loadImgMprType | resizeViewType
 
 interface loadSingleViewType {
-  type:  windowType
+  type: windowType
   opType: 'getImg'
   address?: string
   size?: singleViewAspectType
 }
 
 interface resizeViewType {
-  type:windowType | 'mpr',
-  opType: 'resize',
+  type: windowType | 'mpr'
+  opType: 'resize'
   size?: singleViewAspectType | mprAspectType
 }
-
 
 interface loadImgMprType {
   type: 'mpr'
@@ -65,7 +66,7 @@ interface loadImgMprType {
 }
 
 interface resetViewType {
-  type: activeTabType,
+  type: activeTabType
   opType?: 'reset'
 }
 
@@ -80,6 +81,7 @@ interface msgReceivedType {
   type: 'preview' | 'mpr' | 'ax' | 'sag' | 'cor'
   imgs: mprImgProvideType | string
   center?: any
+  desc?: any
 }
 
 export type {
@@ -98,5 +100,6 @@ export type {
   actionType,
   mprViewType,
   loadSingleViewType,
-  resizeViewType
+  resizeViewType,
+  viewDescType
 }

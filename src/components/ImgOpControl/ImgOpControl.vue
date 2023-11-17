@@ -11,14 +11,9 @@ import { HandMove, Contrast, Angle, ZoomIn, FlipHorizontal, Trash, TrashX } from
 import {
   ChevronUpDown16Filled,
   RectangleLandscape12Regular,
-  FlipHorizontal16Filled,
+  FlipHorizontal16Filled
 } from '@vicons/fluent'
-import {
-  RotateCounterclockwise,
-  RotateClockwise,
-  Reset,
-  Export
-} from '@vicons/carbon'
+import { RotateCounterclockwise, RotateClockwise, Reset, Export } from '@vicons/carbon'
 import { PlayCircle, Ruler } from '@vicons/fa'
 import { NIcon } from 'naive-ui'
 import type {
@@ -143,10 +138,10 @@ const opArr = ref<(opBtnType | dropDownPropType)[]>([
     label: 'pseudo',
     icon: '',
     default_icon: '',
-    value: 'bw',
+    value: 'BW',
     options: [
       {
-        label: 'bw',
+        label: 'BW',
         value: 'BW',
         icon: '',
         style: {
@@ -155,8 +150,38 @@ const opArr = ref<(opBtnType | dropDownPropType)[]>([
         }
       },
       {
+        label: 'BWInverse',
+        value: 'BWInverse',
+        icon: '',
+        style: {
+          fontSize: '14px',
+          padding: '0px 0px 0px 3px',
+          width: '200px'
+        }
+      },
+      {
         label: 'rainbow',
         value: 'rainbow',
+        icon: '',
+        style: {
+          fontSize: '14px',
+          padding: '0px 0px 0px 3px',
+          width: '200px'
+        }
+      },
+      {
+        label: 'rainbow1',
+        value: 'rainbow1',
+        icon: '',
+        style: {
+          fontSize: '14px',
+          padding: '0px 0px 0px 3px',
+          width: '200px'
+        }
+      },
+      {
+        label: 'rainbow2',
+        value: 'rainbow2',
         icon: '',
         style: {
           fontSize: '14px',

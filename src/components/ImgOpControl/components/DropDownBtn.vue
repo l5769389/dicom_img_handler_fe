@@ -18,7 +18,8 @@ const props = defineProps({
         value: String, // 细分种类是哪种
         icon: Object,
         default_icon: Object,
-        options: []
+        options: [],
+        type: String
       }
     }
   }
@@ -46,7 +47,8 @@ const sendToServer = (subType: string) => {
   }
   const msg: opMsgType = {
     type: activeView.value,
-    opType: subType
+    opType: props.selection.label,
+    subOpType: subType
   }
   ws.sendMsg(msg)
 }

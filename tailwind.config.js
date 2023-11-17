@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        primaryColor:'#18a058'
+        primaryColor:'#18a058',
+        fourCornerColor: '#f87171'
       }
     },
   },

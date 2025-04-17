@@ -26,11 +26,10 @@ class MyWebsocket {
   // @Throttled(50)
   sendMsg(msg: opMsgType | loadImgType | resetViewType) {
     const str = JSON.stringify(msg)
-    console.log(str)
-
     if (!this.connected) {
       throw new Error()
     }
+    console.log(str)
     this.ws?.send(str)
   }
 

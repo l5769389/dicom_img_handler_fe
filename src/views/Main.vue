@@ -62,11 +62,17 @@ const handleMsg: (msg: any) => void = (msg) => {
     viewDescMap.value['preview'] = desc
   } else if (type === 'mpr') {
     mprImgRef.value = imgs as mprImgProvideType
+    console.log(
+      `mpr 大小为：${(imgs as mprImgProvideType).sag.length}, ${
+        (imgs as mprImgProvideType).cor.length
+      }, ${(imgs as mprImgProvideType).ax.length}`
+    )
     viewDescMap.value['ax'] = desc['ax']
     viewDescMap.value['sag'] = desc['sag']
     viewDescMap.value['cor'] = desc['cor']
   } else {
     console.log('single mpr')
+    viewDescMap.value[type] = desc
     mprImgRef.value[type] = imgs as string
   }
   if (center) {
